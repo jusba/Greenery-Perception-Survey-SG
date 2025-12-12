@@ -414,12 +414,12 @@ export const SURVEY_TEXT = {
     fi: "Kyllä",
   },
   q_ai_otherPlaceholder: {
-    en: "Please describe what made you consider some of the images to be AI generated",
-    fi: "Kuvaile, mikä sai sinut ajattelemaan joidenkin kuvien olevan tekoälyllä tuotettuja",
+    en: "Please describe what made you consider some of the images to be AI generated.",
+    fi: "Kuvaile, mikä sai sinut ajattelemaan joidenkin kuvien olevan tekoälyllä tuotettuja.",
   },
   q_ai_otherErrorText: {
-    en: "Please specify your answer",
-    fi: "Täsmennä vastauksesi",
+    en: "Please specify your answer.",
+    fi: "Täsmennä vastauksesi.",
   },
 
   q_open_feedback_title: {
