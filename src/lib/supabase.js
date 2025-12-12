@@ -13,7 +13,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 export async function saveSurveyResponse(completeData) {
   try {
     const { data, error } = await supabase
-      .from('survey_responses')
+      .from('singapore_responses')
       .insert([
         {
           participant_id: generateParticipantId(),

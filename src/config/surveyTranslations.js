@@ -64,7 +64,7 @@ export const SURVEY_TEXT = {
 
       <b>The survey comprises of three parts. It should take approximately 10–15 minutes to complete. You are recommended to use a computer or other large screen device for the rating.</b>
       <p>We will collect, analyze, publish, and store your data confidentially and anonymously under the EU GDPR. Full notice: <a href="https://a3s.fi/swift/v1/survey_elements/Survey_Privacy_Notice_English.pdf">Data and privacy notice</a></p>
-      <p>At the end of the survey, you will have the opportunity to enter your email address for a chance to win movie tickets.</p>
+      <b style=color:red>At the end of the survey, please copy or screenshot the generated key to claim the participation prize.</b>
       <p>Questions? Email the responsible researcher Jussi Torkko (jussi.torkko[at]helsinki.fi).</p>
       <b>By continuing, you confirm: (1) you understand the purpose of the study, (2) participation is voluntary, and (3) you are at least 18 years old.</b>
     `,
@@ -144,11 +144,8 @@ export const SURVEY_TEXT = {
   completed_html: {
     en: `
       <h3>Thank you for your participation!</h3>
-      <h4>
-        <a href="https://elomake.helsinki.fi/lomakkeet/138006/lomake.html" style="color:#0911f9;">
-          Click here to input your email to join the raffle (movie tickets).
-        </a>
-      </h4> 
+      <h4><b>Your reward code:</b> <span style="color:red; font-size:1.25rem; letter-spacing:0.08em;">{participantCode}</span></h4>
+      <p><b>Please copy or screenshot this code.</b></p>
       <h4>
         If you have any questions, you can contact the responsible researcher at
         <b>jussi.torkko[at]helsinki.fi</b>.
@@ -223,19 +220,24 @@ export const SURVEY_TEXT = {
     en: "Where are you currently living? (City, Country)",
     fi: "Missä asut tällä hetkellä? (Kaupunki, Maa)",
   },
+  q_grow_country_title: {
+    en: "Where did you live for the longest time when growing up? (City, Country)",
+    fi: "Missä kasvoit? (Kaupunki, Maa)",
+  },
 
   q_income_title: {
     en: "What is your household monthly income level?",
     fi: "Mikä on kotitaloutesi kuukausittainen tulotaso?",
   },
+  
   q_income_choices: {
     en: [
-      "Less than €1500",
-      "€1500 - €2500",
-      "€2501 - €3500",
-      "€3501 - €4500",
-      "€4501 - €6000",
-      "Over €6000",
+      "Less than S$2270",
+      "S$2270 - S$3795",
+      "S$3796 - S$5301",
+      "S$5302 - S$6815",
+      "S$6816 - S$9087",
+      "Over S$9087",
       "Prefer not to say",
     ],
     fi: [

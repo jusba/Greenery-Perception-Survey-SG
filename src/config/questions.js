@@ -19,7 +19,7 @@ export const displayedImages = generateQuestionImages();
  *   tapToRate
  * }
  */
-export function buildSurveyForLexicon(lex, lang = "en") {
+export function buildSurveyForLexicon(lex, lang = "en", participantCode = "") {
   // DEMOGRAPHICS (unchanged — customize as you like)
   const demographicQuestions = [
     {
@@ -45,6 +45,12 @@ export function buildSurveyForLexicon(lex, lang = "en") {
     {
       name: "current_country",
       title: t(lang, "q_current_country_title"),
+      type: "text",
+      isRequired: true,
+    },
+    {
+      name: "grow_country",
+      title: t(lang, "q_grow_country_title"),
       type: "text",
       isRequired: true,
     },
@@ -277,6 +283,6 @@ export function buildSurveyForLexicon(lex, lang = "en") {
     showProgressBar: "aboveheader",
     progressBarType: "questions",
     autoGrowComment: true,
-    completedHtml: t(lang, "completed_html"),
+    completedHtml: tmpl(t(lang, "completed_html"), { participantCode }),
   };
 }

@@ -25,6 +25,16 @@ const hideNormalRatingsStyle = `
 }
 `;
 
+
+function generateCode(len = 10) {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // no 0/O/1/I
+  const bytes = new Uint8Array(len);
+  window.crypto.getRandomValues(bytes);
+  let out = "";
+  for (let i = 0; i < len; i++) out += alphabet[bytes[i] % alphabet.length];
+  return out;
+}
+
 /* =========================================================
    RATING ORDER resolver
    ========================================================= */
@@ -161,8 +171,8 @@ const STRINGS = {
   en: {
     finishRatingAlert: (n) =>
       `Thanks for rating! You’ve completed ${n} images.\n\nPlease press “Finish rating” to continue.`,
-    saveSuccess: "Thank you for completing the survey! Your responses have been saved.",
-    saveError: "There was an error saving your responses. Please try again.",
+    saveSuccess: "Thank you for completing the survey! Your responses have been saved.\n\nRemember to copy or screenshot the randomly generated key at the end of they survey to claim the reward for participating",
+    saveError: "There was an error saving your responses. Please try again.\n\nRemember to copy or screenshot the randomly generated key at the end of they survey to claim the reward for participating",
     finishSurveyLabel: "Finish survey",
     finishRatingLabel: "Finish rating",
   },
@@ -424,6 +434,13 @@ export default function App() {
   const trapInfoMapRef = React.useRef(new WeakMap()); // panel -> trap info
   const trapChecksRef = React.useRef([]);             // for survey_metadata
 
+  const CODE_KEY = "participant.code.v1";
+  const participantCodeRef = React.useRef(localStorage.getItem(CODE_KEY) || null);
+  if (!participantCodeRef.current) {
+    participantCodeRef.current = generateCode(10);
+    localStorage.setItem(CODE_KEY, participantCodeRef.current);
+  }
+
   const [lightbox, setLightbox] = React.useState(null);
   const [lightboxLoaded, setLightboxLoaded] = React.useState(false);
   React.useEffect(() => setLightboxLoaded(false), [lightbox?.src]);
@@ -490,7 +507,7 @@ export default function App() {
   const lex = LEXMAP[lexVariant][lang];
 
   const surveyJson = React.useMemo(
-    () => buildSurveyForLexicon(lex, lang),
+    () => buildSurveyForLexicon(lex, lang, participantCodeRef.current),
     [lex, lang]
   );
 
@@ -510,6 +527,29 @@ export default function App() {
     const defaultNext = m.pageNextText || "Next";
     m.completeText = t.finishSurveyLabel
     m.locale = lang;
+
+    // POP-UP to remind copying the key at the end
+    m.onCurrentPageChanging.add((_sender, options) => {
+      // Only intercept Next (not Prev)
+      if (!options.isNextPage) return;
+
+      const from = options.oldCurrentPage?.name;
+      const to = options.newCurrentPage?.name;
+
+      // Example: only confirm leaving the rating page
+      if (from !== "introPage" && from !== "feedback")  return;
+
+      // Optional: require finishing rating first
+      // if (normalRatedCountRef.current < MAX_IMAGES) return;
+
+      // Stop navigation for now
+
+      const ok = window.confirm(
+        lang === "fi"
+          ? "Remember to copy or screenshot the randomly generated key at the end of they survey to claim the reward for participating"
+          : "Remember to copy or screenshot the randomly generated key at the end of they survey to claim the reward for participating"
+      )
+    });
 
     // Hide panel nav UI always (we drive via lightbox)
     const removePanelUI = () => {
@@ -843,6 +883,7 @@ export default function App() {
       const completeData = {
         responses,
         survey_metadata: {
+          participant_code: participantCodeRef.current,
           survey_opened_at: surveyOpenedAtRef.current,
           completion_time: new Date().toISOString(),
           rating_started_at: ratingStartRef.current,
@@ -975,7 +1016,7 @@ export default function App() {
 
       <div className="survey-wrapper">
         <Survey model={model} />
-
+        {/*
         <div className="lang-switcher">
           <label>
             <span style={{ marginRight: "0.5rem" }}>
@@ -1003,7 +1044,7 @@ export default function App() {
               <option value="fi">Suomi</option>
             </select>
           </label>
-        </div>
+        </div>*/}
       </div>
 
       <KeyboardRatings model={model} lightbox={lightbox} order={ratingOrder} />
