@@ -64,7 +64,7 @@ export const SURVEY_TEXT = {
 
       <b>The survey comprises of three parts. It should take approximately 10–15 minutes to complete. You are recommended to use a computer or other large screen device for the rating.</b>
       <p>We will collect, analyze, publish, and store your data confidentially and anonymously under the EU GDPR. Full notice: <a href="https://a3s.fi/swift/v1/survey_elements/Survey_Privacy_Notice_English.pdf">Data and privacy notice</a></p>
-      <b style=color:red>Near the end of the survey, please submit your NUS email address to claim the participation prize.</b>
+      <b style=color:red>Near the end of the survey, please submit your NUS email address (Starting with the letter E) to claim the participation prize.</b>
       <p>Questions? Email the responsible researcher Jussi Torkko (jussi.torkko[at]helsinki.fi).</p>
       <b>By continuing, you confirm: (1) you understand the purpose of the study, (2) participation is voluntary, and (3) you are at least 18 years old.</b>
     `,
@@ -425,8 +425,8 @@ export const SURVEY_TEXT = {
     fi: "Avoin palaute tai muita kommentteja liittyen aiempiin kysymyksiin?",
   },
   q_email: {
-    en: "Please share your NUS affliated email address to claim the participation reward.",
-    fi: "Please share your NUS affliated email address to claim the participation reward.",
+    en: "Please share your NUS affliated email address (Starting with the letter E) to claim the participation reward.",
+    fi: "Please share your NUS affliated email address (Starting with the letter E) to claim the participation reward.",
   },
 
   

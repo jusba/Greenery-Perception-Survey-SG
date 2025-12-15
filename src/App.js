@@ -546,8 +546,8 @@ export default function App() {
 
       const ok = window.confirm(
         lang === "fi"
-          ? "Remember to submit your NUS email address near the end of the survey to claim the participation reward."
-          : "Remember to submit your NUS email address near the end of the survey to claim the participation reward."
+          ? "Remember to submit your NUS email address (Starting with the letter E) near the end of the survey to claim the participation reward."
+          : "Remember to submit your NUS email address (Starting with the letter E) near the end of the survey to claim the participation reward."
       )
     });
 
