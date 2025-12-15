@@ -171,8 +171,8 @@ const STRINGS = {
   en: {
     finishRatingAlert: (n) =>
       `Thanks for rating! You’ve completed ${n} images.\n\nPlease press “Finish rating” to continue.`,
-    saveSuccess: "Thank you for completing the survey! Your responses have been saved.\n\nRemember to copy or screenshot the randomly generated key at the end of they survey to claim the reward for participating",
-    saveError: "There was an error saving your responses. Please try again.\n\nRemember to copy or screenshot the randomly generated key at the end of they survey to claim the reward for participating",
+    saveSuccess: "Thank you for completing the survey! Your responses have been saved.",
+    saveError: "There was an error saving your responses. Please try again.",
     finishSurveyLabel: "Finish survey",
     finishRatingLabel: "Finish rating",
   },
@@ -546,8 +546,8 @@ export default function App() {
 
       const ok = window.confirm(
         lang === "fi"
-          ? "Remember to copy or screenshot the randomly generated key at the end of they survey to claim the reward for participating"
-          : "Remember to copy or screenshot the randomly generated key at the end of they survey to claim the reward for participating"
+          ? "Remember to submit your NUS email address near the end of the survey to claim the participation reward."
+          : "Remember to submit your NUS email address near the end of the survey to claim the participation reward."
       )
     });
 
