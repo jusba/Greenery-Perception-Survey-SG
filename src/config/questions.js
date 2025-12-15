@@ -145,8 +145,9 @@ export function buildSurveyForLexicon(lex, lang = "en", participantCode = "") {
     {
       name: "email",
       title: t(lang, "q_email"),
-      type: "email",
-      isRequired: false,
+      type: "text",
+      inputType: "email",
+      isRequired: true,
     },
   ];
 

@@ -424,7 +424,7 @@ export const SURVEY_TEXT = {
     en: "Open feedback or any additional comments and remarks regarding the previous questions?",
     fi: "Avoin palaute tai muita kommentteja liittyen aiempiin kysymyksiin?",
   },
-  Q_email: {
+  q_email: {
     en: "Please share your NUS affliated email address to claim the participation reward.",
     fi: "Please share your NUS affliated email address to claim the participation reward.",
   },
